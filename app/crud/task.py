@@ -3,7 +3,7 @@ from sqlmodel import Session, select
 from uuid import UUID
 
 from app.models.task import Task
-from app.schemas.task import TaskBase, TaskCreate, TaskRead
+from app.schemas.task import TaskBase, TaskCreate
 
 class TaskCRUD:
     @staticmethod

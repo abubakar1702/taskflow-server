@@ -1,7 +1,6 @@
 from typing import Generator
 from sqlmodel import Session
-from app.db.base import engine
+from app.db.session import get_session
 
 def get_db() -> Generator[Session, None, None]:
-    with Session(engine) as session:
-        yield session
+    yield from get_session()
