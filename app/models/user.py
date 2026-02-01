@@ -10,6 +10,7 @@ class User(SQLModel, table=True):
     last_name: str
     username: str = Field(unique=True, index=True)
     email: str = Field(unique=True, index=True)
+    hashed_password: str
     is_active: bool = Field(default=True)
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(

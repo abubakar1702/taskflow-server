@@ -15,11 +15,7 @@ class UserBase(BaseModel):
         return f"{self.first_name} {self.last_name}"
 
 
-class UserCreate(BaseModel):
-    first_name: str
-    last_name: str
-    username: str
-    email: EmailStr
+class UserCreate(UserBase):
     password: str
 
 
@@ -32,6 +28,10 @@ class UserRead(UserBase):
         "from_attributes": True
     }
 
-
 class UserInDB(UserRead):
     password_hash: str
+
+
+class UserLogin(BaseModel):
+    username: str
+    password: str
