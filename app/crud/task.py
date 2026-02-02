@@ -11,7 +11,9 @@ class TaskCRUD:
         return db.get(Task, task_id)
 
     @staticmethod
-    def get_multi(db: Session, skip: int = 0, limit: int = 100) -> List[Task]:
+    def get_multi(db: Session, skip: int = 0, limit: int = 100, creator_id: UUID = None) -> List[Task]:
+        if creator_id:
+            return db.exec(select(Task).where(Task.creator_id == creator_id).offset(skip).limit(limit)).all()
         return db.exec(select(Task).offset(skip).limit(limit)).all()
 
     @staticmethod
